@@ -7,7 +7,7 @@ public class Test {
 
         String[] arr = sql.split("CREATE DATABASE");
         for(String s : arr) {
-            System.out.println(s);
+            System.out.println(s);///;
         }
 
     }
