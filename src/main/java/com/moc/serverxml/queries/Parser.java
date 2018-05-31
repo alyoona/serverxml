@@ -43,7 +43,7 @@ public class Parser {
             if (sql.contains(delimiter)) {
                 String dbName = getEntityNameFromCreateOrDrop(sql, delimiter);
                 query.setEntityName(dbName);
-                query.setEntityType(Entity.TABLE.name());
+                query.setEntityType(Entity.DATABASE.name());
             } else {
                 throw new InvalidSyntaxException("Supported next SQL syntax: " + Message.EXAMPLE_CREATE);
             }

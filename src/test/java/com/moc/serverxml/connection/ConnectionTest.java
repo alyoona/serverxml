@@ -1,9 +1,6 @@
-package com.moc.serverxml;
+package com.moc.serverxml.connection;
 
-import com.moc.serverxml.connection.Connection;
-
-public class Test {
-
+public class ConnectionTest {
     public static void main(String[] args) {
         Connection.setProperty("my-db");
         System.out.println(Connection.getDB());

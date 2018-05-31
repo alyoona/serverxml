@@ -11,7 +11,7 @@ public class QueryExecutor {
 
     public void process(Query query) {
 
-        XmlMetadata xmlMetadata = new XmlMetadata();
+        XmlMetadata xmlMetadata = new XmlMetadata(query);
         xmlMetadata.generate();
 
         queryResult = null;
