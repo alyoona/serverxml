@@ -1,23 +1,36 @@
 package com.moc.serverxml.executors;
 
-
+import com.moc.serverxml.enums.Operator;
 import com.moc.serverxml.queries.Query;
-import com.moc.serverxml.results.QueryResult;
-import com.moc.serverxml.xml.XmlMetadata;
+import com.moc.serverxml.queries.QueryCreateDataBase;
 
-public class QueryExecutor {
+public class QueryExecutor implements Executor {
 
-   private QueryResult queryResult;
+    private Object result;
 
-    public void process(Query query) {
-
-        XmlMetadata xmlMetadata = new XmlMetadata(query);
-        xmlMetadata.generate();
-
-        queryResult = null;
+    @Override
+    public Object getResult() {
+        return result;
     }
 
-    public QueryResult getResult(){
-        return queryResult;
+    @Override
+    public void process(Object object) {
+        Query query = (Query) object;
+        if ((Operator.CREATE.name()).equals(query.getOperatorType())) {
+            QueryCreateDataBase queryCreate = (QueryCreateDataBase) query;
+            CreateDataBaseExecutor createExecutor = new CreateDataBaseExecutor();
+            createExecutor.process(queryCreate);
+            result = createExecutor.getResult();
+        } else if ((Operator.INSERT.name()).equals(query.getOperatorType())) {
+            //todo
+        } else if ((Operator.SELECT.name()).equals(query.getOperatorType())) {
+            //todo
+        } else if ((Operator.UPDATE.name()).equals(query.getOperatorType())) {
+            //todo
+        } else if ((Operator.DELETE.name()).equals(query.getOperatorType())) {
+            //todo
+        } else if ((Operator.DROP.name()).equals(query.getOperatorType())) {
+            //todo
+        }
     }
 }

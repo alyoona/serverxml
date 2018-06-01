@@ -1,7 +1,7 @@
 package com.moc.serverxml;
 
 import com.moc.serverxml.executors.QueryExecutor;
-import com.moc.serverxml.queries.Parser;
+import com.moc.serverxml.parsers.Parser;
 import com.moc.serverxml.queries.Query;
 import com.moc.serverxml.results.QueryResult;
 

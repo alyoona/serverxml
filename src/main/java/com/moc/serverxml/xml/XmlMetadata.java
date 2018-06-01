@@ -22,20 +22,15 @@ public class XmlMetadata implements Generator {
 
     public void generate() {
         String operator = query.getOperatorType();
-
         if ((Operator.CREATE.name()).equals(operator)) {
             QueryCreate queryCreate = (QueryCreate) query;
             String entityType = queryCreate.getEntityType();
             if ((Entity.DATABASE.name()).equals(entityType)) {
-                String dataBaseName = queryCreate.getEntityName();
+                String  dataBaseName = queryCreate.getEntityName();
                 Connection.setProperty(dataBaseName);
-                String xml = XmlBuilder.generate(dataBaseName);
+                String xml = XmlBuilder.generate(entityType, dataBaseName);
 
-                try {
-                    Files.createDirectory(Paths.get(dataBaseName));
-                } catch (IOException e) {
-                    throw new RuntimeException("error while creating DataBase: " + dataBaseName);
-                }
+
             }
         }
     }

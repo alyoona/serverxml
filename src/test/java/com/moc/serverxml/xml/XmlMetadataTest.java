@@ -1,7 +1,7 @@
 package com.moc.serverxml.xml;
 
 
-import com.moc.serverxml.queries.Parser;
+import com.moc.serverxml.parsers.Parser;
 import com.moc.serverxml.queries.Query;
 
 public class XmlMetadataTest {

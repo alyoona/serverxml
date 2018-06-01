@@ -9,8 +9,9 @@ public class Message {
     public static final String EXAMPLE_SELECT = "SELECT columnName1(,..) FROM tableName";
     public static final String EXAMPLE_UPDATE = "UPDATE tableName SET columnName1 = value1(, ..) (WHERE..) ";
     public static final String EXAMPLE_DELETE = "DELETE FROM tableName WHERE columnName1 = value1(, ..)";
-    public static final String EXAMPLE_DROP_TABLE = "DROP TABLE tableName";
+    public static final String EXAMPLE_DROP = getExampleDrop();
     public static final String EXAMPLE_DROP_DB = "DROP DATABASE dbName";
+    public static final String EXAMPLE_DROP_TABLE = "DROP TABLE tableName";
 
 
     private static String getExampleCreate() {
@@ -20,6 +21,15 @@ public class Message {
         builder.append("\n");
         builder.append("or ");
         builder.append(EXAMPLE_CREATE_TABLE);
+        return builder.toString();
+    }
+    private static String getExampleDrop() {
+        StringBuilder builder = new StringBuilder("\n");
+        builder.append("or ");
+        builder.append(EXAMPLE_DROP_DB);
+        builder.append("\n");
+        builder.append("or ");
+        builder.append(EXAMPLE_DROP_TABLE);
         return builder.toString();
     }
 

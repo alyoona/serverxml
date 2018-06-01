@@ -4,13 +4,17 @@ import java.util.List;
 
 public class XmlBuilder  {
 
-    public static String generate(String dataBaseName) {
+    public static String generate(String entityType, String entityName) {
         StringBuilder builder = new StringBuilder();
-        builder.append("<dataBase>\n");
+        builder.append("<entityType>\n");
+        builder.append(entityType);
+        builder.append(">\n");
         builder.append("  <name>");
-        builder.append(dataBaseName);
+        builder.append(entityName);
         builder.append("</name>\n");
-        builder.append("</dataBase>\n");
+        builder.append("</");
+        builder.append(entityType);
+        builder.append(">\n");
         return builder.toString();
     }
     //list: or fields&dataTypes, or fields&data
