@@ -1,5 +1,7 @@
 package com.moc.jdbcclient.executors;
 
+import com.moc.jdbcclient.queries.QueryCreateDataBase;
+import com.moc.jdbcclient.queries.QueryCreateTable;
 import com.sun.deploy.xml.XMLAttribute;
 import com.sun.deploy.xml.XMLNodeBuilder;
 
@@ -7,17 +9,10 @@ import javax.xml.XMLConstants;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-public class CreateTableExecutor implements Executor{
+public class CreateTableExecutor {
 
-    @Override
-    public void process(Object object) {
-
-
+    public static String process(QueryCreateTable queryCreate) {
 
     }
 
-    @Override
-    public Object getResult() {
-        return null;
-    }
 }

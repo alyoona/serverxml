@@ -3,24 +3,13 @@ package com.moc.jdbcclient.executors;
 import com.moc.jdbcclient.queries.QueryCreateDataBase;
 import com.moc.jdbcclient.xml.XMLUtil;
 
-import javax.xml.XMLConstants;
-import java.io.IOException;
+public class CreateDataBaseExecutor  {
 
-public class CreateDataBaseExecutor implements Executor {
-
-    private Object result;
-
-    @Override
-    public void process(Object object) {
-        QueryCreateDataBase query = (QueryCreateDataBase) object;
-        String entityName = query.getEntityName();
+    public static String process(QueryCreateDataBase queryCreate) {
+        String entityName = queryCreate.getEntityName();
         XMLUtil.createDataBaseFolder(entityName);
         XMLUtil.generateDataBaseMetaDataXml(entityName);
-
+        return "DataBase " + entityName + " was successfully created";
     }
 
-    @Override
-    public Object getResult() {
-        return null;
-    }
 }

@@ -29,6 +29,7 @@ public final class XMLUtil {
             t.setOutputProperty(OutputKeys.INDENT, "yes");
             t.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             Source source = new DOMSource(doc);
+
             Result result = new StreamResult(out);
             t.transform(source, result);
         } catch (Exception e) {
@@ -91,6 +92,38 @@ public final class XMLUtil {
     }
 
     public static void generateDataBaseMetaDataXml(String entityName) {
-
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        try {
+            builder = factory.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            throw new RuntimeException("error while creating DocumentBuilder", e);
+        }
+        Document doc = builder.newDocument();
+        Element dataBase = doc.createElement("dataBase");
+        doc.appendChild(dataBase);//root: </dataBase>
+        Text dataBaseName = doc.createTextNode(entityName);
+        dataBase.appendChild(dataBaseName);
+        String dataBaseXmlPath = Connection.getDB() + File.separator + entityName + "MetaData.xml";
+        doc.toString();
+        try {
+            write(doc, new FileOutputStream(dataBaseXmlPath));
+        } catch (IOException e) {
+            throw new RuntimeException("error while creating dataBaseMetaDataXml", e);
+        }
     }
+
+    static String getXMLString(Document xmlDoc) throws Exception {
+        DOMSource source = new DOMSource(xmlDoc.getDocumentElement());
+        StringWriter writer = new StringWriter();
+        StreamResult result = new StreamResult(writer);
+        TransformerFactory tFactory = TransformerFactory.newInstance();
+        Transformer transformer = tFactory.newTransformer();
+        transformer.transform(source, result);
+        StringBuffer strBuf = writer.getBuffer();
+        return strBuf.toString();
+    }
+
+
+
 }

@@ -1,5 +1,6 @@
 package com.moc.jdbcclient;
 
+import com.moc.jdbcclient.connection.Connection;
 import com.moc.jdbcclient.queries.QueryCreateTable;
 import com.moc.jdbcclient.xml.XMLUtil;
 
@@ -26,9 +27,9 @@ public class Test {
         map.put("id", "INT");
         map.put("name", "CHAR(20)");
         query.setColumnNamesAndDataTypesMap(map);
+        XMLUtil.createDataBaseFolder("my_db");
+        XMLUtil.generateDataBaseMetaDataXml("my_db");
 
-        XMLUtil.generateNewTable(query);
-        XMLUtil.generateTableMetaData(Map<String, String> map);
 
 
     }
