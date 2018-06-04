@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CreateTableExecutor {
 
     public static String process(QueryCreateTable queryCreate) {
-
+return null;
     }
 
 }

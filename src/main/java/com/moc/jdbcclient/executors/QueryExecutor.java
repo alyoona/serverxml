@@ -8,6 +8,7 @@ import com.moc.jdbcclient.queries.QueryCreateDataBase;
 import com.moc.jdbcclient.queries.QueryCreateTable;
 import com.moc.jdbcclient.results.QueryResult;
 
+import java.io.*;
 import java.sql.*;
 
 public class QueryExecutor implements Statement {
@@ -15,6 +16,16 @@ public class QueryExecutor implements Statement {
     private String resultMessage;
     private int updateCount = 0;
     private boolean isSelectOperator = false;
+
+
+
+    Writer serverWriter;
+    Reader reader;
+    //QueryGenerator queryGenerator = new QueryGenerator();
+    SqlParser parser = new SqlParser();
+
+    public QueryExecutor(BufferedWriter writer, BufferedReader reader) {
+    }
 
     public String getResultMessage() {
         return resultMessage;
@@ -28,6 +39,18 @@ public class QueryExecutor implements Statement {
 
     @Override
     public boolean execute(String sql) throws SQLException {
+        String query22 = queryGenerator.generateQuery(sql);
+        try {
+            serverWriter.write(query22);
+            System.out.println("query server with query: " + query22);
+            // String xml = reader.
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         SqlParser parser = new SqlParser();
         Query query = (Query) parser.parse(sql);
         if ((Operator.CREATE.name()).equals(query.getOperatorType())) {

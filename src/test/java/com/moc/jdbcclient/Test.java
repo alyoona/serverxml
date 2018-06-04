@@ -20,16 +20,10 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) throws ParserConfigurationException, TransformerConfigurationException, IOException, SAXException {
-        QueryCreateTable query = new QueryCreateTable();
-        query.setEntityType("TABLE");
-        query.setEntityName("my_table");
-        Map<String, String> map = new HashMap<>();
-        map.put("id", "INT");
-        map.put("name", "CHAR(20)");
-        query.setColumnNamesAndDataTypesMap(map);
-        XMLUtil.createDataBaseFolder("my_db");
-        XMLUtil.generateDataBaseMetaDataXml("my_db");
 
+        Document newDoc = XMLUtil.generateDataBaseMetaDataXml("my_dbdbdbd");
+        String string = XMLUtil.convertDocumentToString(newDoc);
+        System.out.println(string);
 
 
     }

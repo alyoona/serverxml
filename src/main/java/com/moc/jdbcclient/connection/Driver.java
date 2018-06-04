@@ -21,7 +21,7 @@ public class Driver implements java.sql.Driver {
     @Override
     public Connection connect(String url, Properties info) throws SQLException {
 
-        info.
+
         try {
             Socket clientSocket = new Socket("localhost", 3000);
         } catch (IOException e) {

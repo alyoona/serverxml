@@ -26,6 +26,8 @@ public class Connection implements java.sql.Connection{
             throw new RuntimeException(e);
         }
         System.out.println("connection created");
+
+
     }
 
 
@@ -53,7 +55,11 @@ public class Connection implements java.sql.Connection{
 
     @Override
     public Statement createStatement() throws SQLException {
-        return new QueryExecutor();
+        System.out.println("try to create statement");
+        return new PortalStatement(writer, reader);
+
+
+        return new QueryExecutor(writer, reader);
     }
 
     @Override
